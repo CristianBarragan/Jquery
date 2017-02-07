@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Add";
+}
+
+    <div class="content-wrapper">
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr><td>Name:</td><td><input type="text" id="txtaddName" /></td></tr>
+                        <tr><td>Quantity:</td><td><input type="text" id="txtaddQuantity" /></td></tr>
+                    </table>
+                </td>
+             </tr>
+        </table>
+        <button onclick="AddProduct();return false;">Add Product</button>
+    </div>
+
+<script type="text/javascript">
+    function AddProduct() {
+        jQuery.support.cors = true;
+        var Product = {
+            Id: $('#txtaddId').val(), 
+            Name: $('#txtaddName').val(),
+            Quantity: $('#txtaddQuantity').val()
+        };
+
+        $.ajax({
+            url: 'http://localhost:31486/api/Product/',
+            type: 'POST',
+            data: JSON.stringify(Product),
+            contentType: "application/json;charset=utf-8",
+            success: function () {
+                window.location.href = "http://localhost:33332/Home/Index";
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+</script>

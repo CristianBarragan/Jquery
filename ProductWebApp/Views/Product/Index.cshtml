@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <table>
+                <tr>
+                    <td><button onclick="GetProducts();return false">Get all products</button></td>
+                    <td><button onclick="GetProduct();return false">Get product </button>Enter Employee Id: <input type="text" id="txtEmpid" style="width:50PX"/></td>
+                </tr>
+            </table>
+        </div>
+    <//section>
+    <script type="text/javascript">
+        function GetProducts() {
+            jQuery.support.cors = true;
+            $.ajax({
+                url: 'http://localhost:31486/api/product',
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    WriteResponse(data);
+                },
+                error: function(x,y,z){
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+
+        function GetProduct() {
+            jQuery.support.cors = true;
+            var id = $('#txtEmpid').val();
+            $.ajax({
+                url: 'http://localhost:31486/api/product/' + id,
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    ShowProduct(data);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+
+        function DeleteProduct(id) {
+            jQuery.support.cors = true;
+            $.ajax({
+                url: 'http://localhost:31486/api/product/' + id,
+                type: 'DELETE',
+                contentType: "application/json;charset=utf-8",
+                success: function () {
+                    GetProducts();
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+
+        function WriteResponse(products) {
+            var strResult = "<table><th>ID</th><th>Name</th><th>Quantity</th>";
+            $.each(products, function (index, product) {
+                strResult += "<tr><td>" + product.Id + "</td><td> " + product.Name + "</td><td>" + product.Quantity + "</td><td> <a id='myLink' href='#' onclick='DeleteProduct(" + product.Id + ");return false;'>delete</a>" + "</td></tr>";
+            });
+            strResult += "</table>";
+            $("#divResult").html(strResult);
+        }
+
+        function ShowProduct(product) {
+            if (product != null) {
+                var strResult = "<table><th>Id</th><th>Name</th><th>Quantity</th>";
+                strResult += "<tr><td>" + product.Id + "</td><td> " + product.Name + "</td><td>" + product.Quantity + "</td><td> <a id='myLink' href='#' onclick='DeleteProduct(" + product.Id + ");return false;'>delete</a>" + "</td></tr>";
+                strResult += "</table>";
+                $("#divResult").html(strResult);
+            }
+            else {
+                $("#divResult").html("No Results To Display");
+            }
+        }
+    </script>
+}
+
+<ol class="round">
+    <li>
+        <div id="divResult"></div>
+
+    </li>
+</ol>

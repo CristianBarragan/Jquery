@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{A9C2E26A-0B90-4814-9F0B-EF97B35C7FE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{FFF5CFE8-DC22-49DA-AD24-BD907D35077F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductWebApi", "ProductWebApi\ProductWebApi.csproj", "{F157D894-5320-4EB4-A7A8-48D10BA5A595}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductWebApp", "ProductWebApp\ProductWebApp.csproj", "{99DB4D6B-85A9-4228-9507-45169C95EDCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F157D894-5320-4EB4-A7A8-48D10BA5A595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F157D894-5320-4EB4-A7A8-48D10BA5A595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F157D894-5320-4EB4-A7A8-48D10BA5A595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F157D894-5320-4EB4-A7A8-48D10BA5A595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99DB4D6B-85A9-4228-9507-45169C95EDCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99DB4D6B-85A9-4228-9507-45169C95EDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99DB4D6B-85A9-4228-9507-45169C95EDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99DB4D6B-85A9-4228-9507-45169C95EDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F157D894-5320-4EB4-A7A8-48D10BA5A595} = {A9C2E26A-0B90-4814-9F0B-EF97B35C7FE8}
+		{99DB4D6B-85A9-4228-9507-45169C95EDCF} = {FFF5CFE8-DC22-49DA-AD24-BD907D35077F}
+	EndGlobalSection
+EndGlobal
