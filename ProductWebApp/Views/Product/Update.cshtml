@@ -30,6 +30,7 @@
 
 <script type="text/javascript">
     function modify() {
+        jQuery.support.cors = true;
         var dataToPost = { Name: $("#Name").val(), Quantity: $("#Quantity").val() };
         $.ajax({
             type: "Put",
