@@ -1,0 +1,46 @@
+﻿@model ProductWebApp.Models.Product
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+@using (Html.BeginForm("Insert", "Employee", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+    <div>
+        @Html.TextBoxFor(model => model.Id, new { style = "display: none;", id="Id"})
+    </div>
+    <div class="editor-label">
+        @Html.Label("Name")
+    </div>
+    <div>
+        @Html.TextBoxFor(model => model.Name, new { id="Name"})
+    </div>
+    <div class="editor-label">
+        @Html.Label("Quantity")
+    </div>
+    <div>
+        @Html.TextBoxFor(model => model.Quantity, new { id="Quantity"})
+    </div>
+    </fieldset>
+    <input type="button" onclick="modify()" value="Submit" />
+}
+
+<script type="text/javascript">
+    function modify() {
+        var dataToPost = { Name: $("#Name").val(), Quantity: $("#Quantity").val() };
+        $.ajax({
+            type: "Put",
+            url: "http://localhost:31486/api/Product",
+            contentType: "application/json; charset=utf-8",
+            data: { 'id': { id: $("#Id").val() }, 'product': JSON.stringify(dataToPost) },
+            dataType: "json",
+            success: function () {
+                window.location.href = "http://localhost:33332/Home/Index";
+            }
+        });
+        id:$("#Id").val();
+    }
+</script>

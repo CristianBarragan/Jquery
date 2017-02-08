@@ -59,10 +59,15 @@
             });
         }
 
+        function UpdateProduct(id) {
+            jQuery.support.cors = true;
+            window.location.href = location.protocol + "//" + location.host + "/Product/Update/" + id
+        }
+
         function WriteResponse(products) {
             var strResult = "<table><th>ID</th><th>Name</th><th>Quantity</th>";
             $.each(products, function (index, product) {
-                strResult += "<tr><td>" + product.Id + "</td><td> " + product.Name + "</td><td>" + product.Quantity + "</td><td> <a id='myLink' href='#' onclick='DeleteProduct(" + product.Id + ");return false;'>delete</a>" + "</td></tr>";
+                strResult += "<tr><td>" + product.Id + "</td><td> " + product.Name + "</td><td>" + product.Quantity + "</td><td> <a id='myLink' href='#' onclick='DeleteProduct(" + product.Id + ");return false;'>delete</a>" + "</td><td> <a id='myLink' href='#' onclick='UpdateProduct(" + product.Id + ");return false;'>update</a>" + "</td></tr>";
             });
             strResult += "</table>";
             $("#divResult").html(strResult);
@@ -71,7 +76,7 @@
         function ShowProduct(product) {
             if (product != null) {
                 var strResult = "<table><th>Id</th><th>Name</th><th>Quantity</th>";
-                strResult += "<tr><td>" + product.Id + "</td><td> " + product.Name + "</td><td>" + product.Quantity + "</td><td> <a id='myLink' href='#' onclick='DeleteProduct(" + product.Id + ");return false;'>delete</a>" + "</td></tr>";
+                strResult += "<tr><td>" + product.Id + "</td><td> " + product.Name + "</td><td>" + product.Quantity + "</td><td> <a id='myLink' href='#' onclick='DeleteProduct(" + product.Id + ");return false;'>delete</a>" + "</td><td> <a id='myLink' href='#' onclick='UpdateProduct(" + product.Id + ");return false;'>update</a>" + "</td></tr>";
                 strResult += "</table>";
                 $("#divResult").html(strResult);
             }
