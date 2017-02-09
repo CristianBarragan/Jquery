@@ -34,14 +34,14 @@
         var dataToPost = { Name: $("#Name").val(), Quantity: $("#Quantity").val() };
         $.ajax({
             type: "Put",
-            url: "http://localhost:31486/api/Product",
+            url: "http://localhost:31486/api/Product" + $("#Id").val(),
             contentType: "application/json; charset=utf-8",
-            data: { 'id': { id: $("#Id").val() }, 'product': JSON.stringify(dataToPost) },
-            dataType: "json",
+            //data: { 'id': { id: $("#Id").val() }, 'product': JSON.stringify(dataToPost) },
+            data: JSON.stringify(dataToPost),
+            //dataType: "json",
             success: function () {
-                window.location.href = "http://localhost:33332/Home/Index";
+                window.location.href = "http://localhost:33332/Product/Index";
             }
         });
-        id:$("#Id").val();
     }
 </script>
